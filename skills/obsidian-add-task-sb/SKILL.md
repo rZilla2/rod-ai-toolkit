@@ -1,20 +1,20 @@
 ---
 name: obsidian-add-task-sb
 description: >
-  Add a task to Rod's Second Brain Obsidian daily note. Use this skill ANY time Claude needs to add, capture,
-  log, or suggest a task or follow-up for Rod — whether from a conversation, a briefing, an email
+  Add a task to the user's Second Brain Obsidian daily note. Use this skill ANY time Claude needs to add, capture,
+  log, or suggest a task or follow-up for the user — whether from a conversation, a briefing, an email
   review, or any other context. Always places the task in today's "Hopefully (~)" section and always
-  appends [Claude] so Rod knows it came from Claude. Never add tasks to Priority or Maybe sections
-  unless Rod explicitly asks. Trigger on any intent to "add a task", "remind me to", "don't forget to",
+  appends [Claude] so the user knows it came from Claude. Never add tasks to Priority or Maybe sections
+  unless the user explicitly asks. Trigger on any intent to "add a task", "remind me to", "don't forget to",
   "log this", "capture this", "add to my list", or whenever Claude proactively wants to suggest a follow-up action.
 ---
 
 # Obsidian Add Task — Second Brain
 
-Adds a Claude-generated task to Rod's Second Brain Obsidian daily note.
+Adds a Claude-generated task to the user's Second Brain Obsidian daily note.
 
 ## Rules (always follow these)
-- Section: always **"Hopefully (~)"** — never Priority or Maybe unless Rod explicitly asks
+- Section: always **"Hopefully (~)"** — never Priority or Maybe unless the user explicitly asks
 - Tag: always append **`[Claude]`** at the end
 - Format: `- [ ] task description [Claude]`
 - Note: today's `YYYY-MM-DD.md` in the Second Brain vault at `10 - Daily Notes/`
@@ -22,10 +22,10 @@ Adds a Claude-generated task to Rod's Second Brain Obsidian daily note.
 ## Steps
 
 ### 0. Always confirm first
-Before adding anything, ask Rod:
+Before adding anything, ask the user:
 > "Want me to add *[task description]* to your daily note?"
 
-Wait for confirmation before proceeding. Only add the task if Rod says yes.
+Wait for confirmation before proceeding. Only add the task if the user says yes.
 
 ### 1. Find today's note
 ```bash
@@ -39,7 +39,7 @@ NOTE="$VAULT/10 - Daily Notes/$TODAY.md"
 ```
 
 ### 2. Check the note exists
-If `$NOTE` doesn't exist, tell Rod and stop — don't create it (the rollover task handles that).
+If `$NOTE` doesn't exist, tell the user and stop — don't create it (the rollover task handles that).
 
 ### 3. Add the task to the Hopefully section
 Read the file, find the `**Hopefully (~)**` line, and insert the new task immediately after it
@@ -111,8 +111,8 @@ print(f"✓ Task added to Hopefully section in {note_path}")
 EOF
 ```
 
-### 4. Confirm to Rod
-Tell Rod the task was added to today's Hopefully list, e.g.:
+### 4. Confirm to the user
+Tell the user the task was added to today's Hopefully list, e.g.:
 > "Added to your Hopefully list: *follow up with Steve about ISO AI sec extension* `[Claude]`"
 
 ## Examples
@@ -124,4 +124,4 @@ Tell Rod the task was added to today's Hopefully list, e.g.:
 → Adds: `- [ ] look into firecrawl CLI [Claude]`
 
 **Claude proactively notices a follow-up needed:**
-→ Adds without being asked, confirms to Rod what was added
+→ Adds without being asked, confirms to the user what was added

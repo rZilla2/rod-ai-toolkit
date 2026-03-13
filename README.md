@@ -1,4 +1,4 @@
-# Rod's AI Toolkit
+# AI Toolkit
 
 Prompts, skills, and configurations for Claude Code + Obsidian workflows. Built for people with ADHD who want AI to actually help them get things done.
 

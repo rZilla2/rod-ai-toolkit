@@ -7,7 +7,7 @@ description: Save notes from the current session to a project's session-notes fo
 
 Your job is to capture the current session as a useful, scannable note and save it to the right place. Think of this as writing a handoff document for your future self.
 
-## Step 1 — Ask Rod which project folder to save to
+## Step 1 — Ask the user which project folder to save to
 
 **Always ask before saving** — never infer silently. First list existing project folders:
 
@@ -19,7 +19,7 @@ ls /sessions/*/mnt/Documents/"Second Brain"/"20 - Projects"/ 2>/dev/null || ls "
 Then ask:
 > "Which project should I save these notes to? Existing projects: [list them]. Or tell me a new project name and I'll create it."
 
-Wait for Rod's answer, then use `Second Brain/20 - Projects/[chosen-project]/` as the target.
+Wait for the user's answer, then use `Second Brain/20 - Projects/[chosen-project]/` as the target.
 
 If no projects folder exists yet, suggest creating one and confirm before proceeding.
 

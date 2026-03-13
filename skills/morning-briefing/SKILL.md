@@ -1,12 +1,12 @@
 ---
 name: morning-briefing
-description: Morning briefing that reads Rod's daily note, Google Calendar, Gmail, weather, and top news to deliver a short, ADHD-friendly rundown of the day. Use this skill whenever Rod says /morning-briefing, "good morning", "morning briefing", "brief me", "what's my day look like", or any similar intent to get oriented at the start of the day. Also use proactively when the morning-briefing scheduled task fires.
+description: Morning briefing that reads the user's daily note, Google Calendar, Gmail, weather, and top news to deliver a short, ADHD-friendly rundown of the day. Use this skill whenever the user says /morning-briefing, "good morning", "morning briefing", "brief me", "what's my day look like", or any similar intent to get oriented at the start of the day. Also use proactively when the morning-briefing scheduled task fires.
 user_invocable: true
 ---
 
 # Morning Briefing
 
-You're Rod's chief of staff. Give him a quick, no-fluff rundown of his day so he can start moving.
+You're the user's chief of staff. Give him a quick, no-fluff rundown of his day so he can start moving.
 
 ## Data Collection
 
@@ -18,7 +18,7 @@ Gather all data first, then present the briefing. Run these steps in parallel wh
 ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain/10 - Daily Notes/YYYY-MM-DD.md
 ```
 
-Use today's date. If the file doesn't exist, tell Rod and stop.
+Use today's date. If the file doesn't exist, tell the user and stop.
 
 ### Pull weather
 
@@ -53,8 +53,8 @@ For each message ID returned, fetch metadata:
 gws gmail users messages get --params '{"userId": "me", "id": "<MESSAGE_ID>", "format": "metadata", "metadataHeaders": ["From", "Subject", "Date"]}'
 ```
 
-Pick the top 3 emails Rod should know about. Prioritize:
-1. Emails from people Rod knows / works with (customers, partners, family)
+Pick the top 3 emails the user should know about. Prioritize:
+1. Emails from people the user knows / works with (customers, partners, family)
 2. Anything time-sensitive or action-required
 3. Skip newsletters, automated notifications, and marketing
 
@@ -125,7 +125,7 @@ Pick ONE task — the highest-priority item that's also small enough to knock ou
 
 "Start with [task] — [why this one, how long it might take]."
 
-The goal is task initiation. The hardest part of ADHD is starting. Give Rod a single, clear first move.
+The goal is task initiation. The hardest part of ADHD is starting. Give the user a single, clear first move.
 
 &nbsp;
 
@@ -140,7 +140,7 @@ The goal is task initiation. The hardest part of ADHD is starting. Give Rod a si
 - Short and scannable. Bullets, short sentences, white space.
 - Add blank lines between sections so nothing feels crammed together.
 - No walls of text. No motivational quotes.
-- Make the call. Recommend one path. Don't present options or ask Rod what he wants to focus on — that creates decision fatigue.
+- Make the call. Recommend one path. Don't present options or ask the user what he wants to focus on — that creates decision fatigue.
 - Never use checkbox syntax in the output (no `- [ ]` or `- [x]`). Plain list items only.
 - If the daily note has items with `#waiting` tags, don't count those in Top 3 Focus — they're blocked.
 - If any data source fails, skip that section gracefully and keep going. Never let one failure block the whole briefing.

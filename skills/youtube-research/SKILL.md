@@ -2,7 +2,7 @@
 name: youtube-research
 description: >
   Research a topic by searching YouTube, pulling transcripts from the top videos,
-  and writing a comprehensive report. Use this skill when Rod says things like
+  and writing a comprehensive report. Use this skill when the user says things like
   "research [topic] on YouTube", "find the best YouTube videos about [topic]",
   "what does YouTube say about [topic]", "/youtube-research [topic]", or any
   intent to gather knowledge from YouTube videos on a subject.
@@ -25,7 +25,7 @@ Search for the topic using yt-dlp. Pull up to 10 results, sorted by relevance (Y
 yt-dlp "ytsearch10:<TOPIC>" --flat-playlist --print "%(id)s | %(title)s | %(view_count)s | %(duration_string)s | %(upload_date)s"
 ```
 
-Show Rod the list with view counts and ask if he wants to:
+Show the user the list with view counts and ask if he wants to:
 - Proceed with all of them
 - Pick specific ones
 - Adjust the search query
@@ -105,14 +105,14 @@ Read each cleaned transcript. Then write a research report in this format:
 ---
 
 **Writing guidelines:**
-- Synthesize, don't summarize. Rod wants insights, not video recaps.
+- Synthesize, don't summarize. the user wants insights, not video recaps.
 - Be opinionated. If the research points to a clear answer, say so.
 - Keep it scannable — bullets, short paragraphs, bold key terms.
-- If Rod asked a specific question (e.g., "best plugins for X"), answer it directly at the top before the detailed breakdown.
+- If the user asked a specific question (e.g., "best plugins for X"), answer it directly at the top before the detailed breakdown.
 
 ## Step 5 — Offer to save
 
-Ask Rod if he wants the report saved to his vault. If yes, save to `Second Brain/40 - Resources/` with filename `YYYY-MM-DD-[topic-slug]-youtube-research.md`.
+Ask the user if he wants the report saved to his vault. If yes, save to `Second Brain/40 - Resources/` with filename `YYYY-MM-DD-[topic-slug]-youtube-research.md`.
 
 ## Step 6 — Cleanup
 

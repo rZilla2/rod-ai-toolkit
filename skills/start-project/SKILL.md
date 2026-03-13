@@ -1,11 +1,11 @@
 ---
 name: start-project
-description: Load context for a project at the start of a session. Use this skill whenever Rod says "let's work on [project]", "pick up where we left off", "continue [project]", "load [project]", "/startProject", or any similar intent to resume project work. Reads project.md and the latest session notes to brief Rod on where things stand before any work begins.
+description: Load context for a project at the start of a session. Use this skill whenever the user says "let's work on [project]", "pick up where we left off", "continue [project]", "load [project]", "/startProject", or any similar intent to resume project work. Reads project.md and the latest session notes to brief the user on where things stand before any work begins.
 ---
 
 # Start Project
 
-Your job is to load context for a project so Rod can pick up exactly where he left off without re-explaining anything.
+Your job is to load context for a project so the user can pick up exactly where he left off without re-explaining anything.
 
 ## Step 1 — Identify the project
 
@@ -16,12 +16,12 @@ Find all projects:
 ls /sessions/*/mnt/Documents/"Second Brain"/"20 - Projects"/ 2>/dev/null | head -5 || ls "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain/20 - Projects/" 2>/dev/null | head -5
 ```
 
-If Rod named a project (e.g. "let's work on claude-obsidian-setup"), match it to the folder. Fuzzy match is fine — "obsidian setup" matches `claude-obsidian-setup`.
+If the user named a project (e.g. "let's work on claude-obsidian-setup"), match it to the folder. Fuzzy match is fine — "obsidian setup" matches `claude-obsidian-setup`.
 
-If Rod didn't name a project, list the folders and ask:
+If the user didn't name a project, list the folders and ask:
 > "Which project? I can see: [list]. Or is this something new?"
 
-Wait for Rod's answer before proceeding.
+Wait for the user's answer before proceeding.
 
 ## Step 2 — Read the project manifest
 
@@ -49,11 +49,11 @@ If no session notes exist yet, just say so — don't make anything up.
 
 ## Step 4 — Pre-load active files
 
-If the `project.md` or `session-notes` explicitly mention specific files that are currently active, pending, or need fixing (e.g., "we need to update `src/components/Button.tsx`" or "pending CLAUDE.md fix"), use your tools to preemptively read those files into your context *before* delivering the briefing. This ensures you are immediately ready to answer questions or write code the second Rod replies.
+If the `project.md` or `session-notes` explicitly mention specific files that are currently active, pending, or need fixing (e.g., "we need to update `src/components/Button.tsx`" or "pending CLAUDE.md fix"), use your tools to preemptively read those files into your context *before* delivering the briefing. This ensures you are immediately ready to answer questions or write code the second the user replies.
 
 ## Step 5 — Deliver the briefing
 
-Give Rod a concise briefing in this format — keep it tight, 60 seconds to read:
+Give the user a concise briefing in this format — keep it tight, 60 seconds to read:
 
 ---
 
@@ -80,7 +80,7 @@ Ready to continue. What would you like to work on?
 
 ## Step 6 — Handling New Projects
 
-**Scenario A: Rod explicitly says this is a NEW project from scratch.**
+**Scenario A: the user explicitly says this is a NEW project from scratch.**
 Do NOT try to load old session notes. Instead, ask which methodology to use:
 
 > "New project — got it. Which approach?
@@ -88,18 +88,18 @@ Do NOT try to load old session notes. Instead, ask which methodology to use:
 > - **PAUL** — Plan-Apply-Unify loop. Single-session, mandatory reconciliation. Better context quality, good for complex/exploratory work.
 > - **Lightweight** — just a project folder and scoping questions. No ceremony."
 
-Wait for Rod's answer.
+Wait for the user's answer.
 
 ### Path 1: GSD Framework
-If Rod picks GSD:
+If the user picks GSD:
 1. Create the project folder under `Second Brain/20 - Projects/[name]/` with a basic `project.md`
 2. If the project will have code, also create `~/Projects/[name]/` and `git init`
-3. Execute the GSD new-project workflow by reading and following `~/.claude/get-shit-done/workflows/new-project.md` directly. In Claude Code CLI, Rod can alternatively type `/gsd:new-project` as a slash command.
+3. Execute the GSD new-project workflow by reading and following `~/.claude/get-shit-done/workflows/new-project.md` directly. In Claude Code CLI, the user can alternatively type `/gsd:new-project` as a slash command.
 4. GSD runs its full flow (questioning → research → requirements → roadmap) and creates `.planning/` with all artifacts
 5. Then execute `/gsd:plan-phase 1` (or read `~/.claude/get-shit-done/workflows/plan-phase.md`) to start building
 
 ### Path 2: PAUL Framework
-If Rod picks PAUL:
+If the user picks PAUL:
 1. Create the project folder under `Second Brain/20 - Projects/[name]/` with a basic `project.md`
 2. If the project will have code, also create `~/Projects/[name]/` and `git init`
 3. Initialize PAUL in the code directory by running `/paul:init`
@@ -107,7 +107,7 @@ If Rod picks PAUL:
 5. Then run `/paul:plan` to create the first executable plan
 
 ### Path 3: Lightweight
-If Rod picks lightweight:
+If the user picks lightweight:
 1. Create the project folder under `Second Brain/20 - Projects/[name]/`
 2. Ask 3 quick scoping questions:
    - **Goal:** What are we building and who is it for?
@@ -141,4 +141,4 @@ If yes, create `[projects-path]/[name]/project.md` using this template:
 ## Standing preferences
 [Any project-specific preferences or rules]
 ```
-Fill in as much as you can from the session history and session notes. Ask Rod to fill in anything you can't infer.
+Fill in as much as you can from the session history and session notes. Ask the user to fill in anything you can't infer.
